@@ -1,17 +1,21 @@
 package lt.karolis.hotel.repository.model;
 
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-import java.util.Set;
-
 @Entity
 @Table(name = "reservation")
-@Getter @Setter @NoArgsConstructor @ToString
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString
 public class Reservation {
 
 //    @ManyToMany
@@ -23,11 +27,14 @@ public class Reservation {
 //    Set<Customers> giveReservation;
 
     @Id
+    @Column(name = "id")
+    private Integer id;
+
     @Column(name = "customerid")
     private Integer customerId;
 
-    @Column(name = "roomid")
-    private Integer roomId;
+//    @Column(name = "roomid")
+//    private Integer roomId;
 
     @Column(name = "startdate")
     private String startDate;
