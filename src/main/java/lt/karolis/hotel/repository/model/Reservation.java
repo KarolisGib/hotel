@@ -1,10 +1,7 @@
 package lt.karolis.hotel.repository.model;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -27,18 +24,26 @@ public class Reservation {
 //    Set<Customers> giveReservation;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id")
     private Integer id;
 
     @Column(name = "customerid")
     private Integer customerId;
 
-//    @Column(name = "roomid")
-//    private Integer roomId;
+    @Column(name = "roomid")
+    private Integer roomId;
 
     @Column(name = "startdate")
     private String startDate;
 
     @Column(name = "enddate")
     private String endDate;
+
+    public Reservation(Integer customerId, Integer roomId, String startDate, String endDate) {
+        this.customerId = customerId;
+        this.roomId = roomId;
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
 }
