@@ -18,9 +18,8 @@ public class Customers {
     @Column(name = "id")
     private Integer id;
 
-    @ManyToMany
-    Set<Rooms> haveReservation;
-
+//    @ManyToMany
+//    Set<Rooms> haveReservation;
     @Column(name = "name")
     private String name;
 

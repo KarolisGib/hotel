@@ -14,13 +14,13 @@ import java.util.Set;
 @Getter @Setter @NoArgsConstructor @ToString
 public class Reservation {
 
-    @ManyToMany
-    @JoinTable(
-            name = "Reservation",
-            joinColumns = @JoinColumn(name = "customerid"),
-            inverseJoinColumns = @JoinColumn(name = "roomid"))
-    Set<Rooms> haveReservation;
-    Set<Customers> giveReservation;
+//    @ManyToMany
+//    @JoinTable(
+//            name = "Reservation",
+//            joinColumns = @JoinColumn(name = "customerid"),
+//            inverseJoinColumns = @JoinColumn(name = "roomid"))
+//    Set<Rooms> haveReservation;
+//    Set<Customers> giveReservation;
 
     @Id
     @Column(name = "customerid")

@@ -18,8 +18,8 @@ public class Rooms {
     @Column(name = "id")
     private Integer id;
 
-    @ManyToMany
-    Set<Customers> giveReservation;
+//    @ManyToMany
+//    Set<Customers> giveReservation;
 
     @Column(name = "hotel")
     private String hotel;
