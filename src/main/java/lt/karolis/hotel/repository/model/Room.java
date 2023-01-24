@@ -13,6 +13,7 @@ import lombok.ToString;
 public class Room {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id")
     private Integer id;
 
@@ -27,4 +28,10 @@ public class Room {
 
     @Column(name = "price")
     private Double price;
+
+    public Room(String hotel, String room, Double price) {
+        this.hotel = hotel;
+        this.room = room;
+        this.price = price;
+    }
 }
