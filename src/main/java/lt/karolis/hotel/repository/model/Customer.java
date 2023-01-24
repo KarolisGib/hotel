@@ -7,26 +7,26 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-import java.util.Set;
-
 @Entity
-@Table(name = "rooms")
+@Table(name = "customers")
 @Getter @Setter @NoArgsConstructor @ToString
-public class Rooms {
+public class Customer {
 
     @Id
     @Column(name = "id")
     private Integer id;
 
 //    @ManyToMany
-//    Set<Customers> giveReservation;
+//    Set<Rooms> haveReservation;
+    @Column(name = "name")
+    private String name;
 
-    @Column(name = "hotel")
-    private String hotel;
+    @Column(name = "surname")
+    private String surname;
 
-    @Column(name = "room")
-    private String room;
+    @Column(name = "phone")
+    private String phone;
 
-    @Column(name = "price")
-    private Double price;
+    @Column(name = "email")
+    private String email;
 }
