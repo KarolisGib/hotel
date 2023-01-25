@@ -11,7 +11,10 @@ import java.util.List;
 
 @Entity
 @Table(name = "rooms")
-@Getter @Setter @NoArgsConstructor @ToString
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString
 public class Room {
 
     @Id
@@ -23,26 +26,24 @@ public class Room {
     @OneToMany(mappedBy = "room", fetch = FetchType.EAGER)
     private List<Reservation> reservations;
 
-    @Column(name = "hotel")
-    private String hotel;
+    @Column(name = "city", nullable = false)
+    private String city;
 
-    @Column(name = "room")
+    @Column(name = "room", nullable = false)
     private String room;
 
-    @Column(name = "price")
+    @Column(name = "price", nullable = false)
     private Double price;
 
-    public Room(Integer id, String hotel, String room, Double price) {
-        this.id = id;
-        this.hotel = hotel;
+    public Room(String city, String room, Double price) {
+        this.city = city;
         this.room = room;
         this.price = price;
     }
 
-    public Room(Integer id, List<Reservation> reservations, String hotel, String room, Double price) {
+    public Room(Integer id, String city, String room, Double price) {
         this.id = id;
-        this.reservations = reservations;
-        this.hotel = hotel;
+        this.city = city;
         this.room = room;
         this.price = price;
     }
