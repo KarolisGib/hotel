@@ -5,8 +5,6 @@ import lt.karolis.hotel.repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class ReservationService {
 
@@ -16,9 +14,5 @@ public class ReservationService {
 
     public Reservation getReservationById(int id) {
         return reservationRepository.findById(id).get();
-    }
-
-    public List<Reservation> getQueryAllCustomers(Integer customerId) {
-        return reservationRepository.getAllCustomers(customerId);
     }
 }
