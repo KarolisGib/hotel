@@ -26,28 +26,27 @@ public class Customer {
     @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER)
     private List<Reservation> reservations;
 
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "surname")
+    @Column(name = "surname", nullable = false)
     private String surname;
 
-    @Column(name = "phone")
+    @Column(name = "phone", nullable = false)
     private String phone;
 
-    @Column(name = "email")
+    @Column(name = "email", nullable = false)
     private String email;
 
-    public Customer(Integer id, String name, String surname, String phone, String email) {
+    public Customer(String name, String surname, String phone, String email) {
         this.name = name;
         this.surname = surname;
         this.phone = phone;
         this.email = email;
     }
 
-    public Customer(Integer id, List<Reservation> reservations, String name, String surname, String phone, String email) {
+    public Customer(Integer id, String name, String surname, String phone, String email) {
         this.id = id;
-        this.reservations = reservations;
         this.name = name;
         this.surname = surname;
         this.phone = phone;
