@@ -10,8 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-@Component
+import java.util.Arrays;
+import java.util.NoSuchElementException;
 
+@Component
 public class BootStrapData implements CommandLineRunner {
 
     @Autowired
@@ -27,28 +29,67 @@ public class BootStrapData implements CommandLineRunner {
     public void run(String... args) throws Exception {
         System.out.println("\n===========================================================\n");
 
-//        Room room = new Room("hotel_name", "room_102", 25.59);
-//        roomRepository.save(room);
+        Room room01 = new Room("hotel_name", "room_102", 25.59);
+        Room room02 = new Room("hotel_name", "room_104", 25.59);
+        roomRepository.save(room01);
+        roomRepository.save(room02);
         roomRepository.findAll().forEach(System.out::println);
 
         System.out.println("\n===========================================================\n");
 
-//        Customer customer01 = new Customer("Customer_name_01","surname_01","asdfa","asdf@asd.df");
-//        Customer customer02 = new Customer("Customer_name_02","surname_02","987654","dddds@asd.df");
-//        customerRepository.save(customer01);
-//        customerRepository.save(customer02);
+        Customer customer01 = findCustomer(1);
+        Customer customer02 = findCustomer(2);
+
         customerRepository.findAll().forEach(System.out::println);
 
         System.out.println("\n===========================================================\n");
 
-//        Reservation reservation01 = new Reservation(1,2,"2023-01-24","2023-01-25");
-//        Reservation reservation02 = new Reservation(2,1,"2023-01-26","2023-01-30");
+        Reservation reservation01 = new Reservation(customer01, 2, "2023-01-01", "2023-01-05");
+        Reservation reservation02 = new Reservation(customer02, 1, "2023-01-26", "2023-01-30");
+        Reservation reservation03 = new Reservation(customer01, 2, "2023-01-10", "2023-01-12");
+        Reservation reservation04 = new Reservation(customer01, 1, "2023-01-24", "2023-01-25");
 //        reservationRepository.save(reservation01);
 //        reservationRepository.save(reservation02);
+//        reservationRepository.save(reservation02);
+//        reservationRepository.save(reservation02);
+        reservationRepository.saveAll(Arrays.asList(reservation01, reservation02, reservation03,reservation04));
         reservationRepository.findAll().forEach(System.out::println);
 
         System.out.println("\n===========================================================\n");
         System.out.println(reservationRepository.findById(1));
+        System.out.println(reservationRepository.findById(1).get().getId());
+        System.out.println(reservationRepository.findById(1).get().getEndDate());
+        System.out.println(reservationRepository.findById(1).get().getStartDate());
+        System.out.println("\n" + reservationRepository.findById(1).get().getCustomer());
+        System.out.println(reservationRepository.findById(1).get().getCustomer().getId());
+        System.out.println(reservationRepository.findById(1).get().getCustomer().getName());
+        System.out.println(reservationRepository.findById(1).get().getCustomer().getSurname());
+        System.out.println(reservationRepository.findById(1).get().getCustomer().getPhone());
+        System.out.println(reservationRepository.findById(1).get().getCustomer().getEmail());
+
+        System.out.println("\n===========================================================\n");
+
+        Customer customer = customerRepository.findById(1).get();
+        System.out.println(customer);
+
+        customerRepository.findById(1).get().getReservations().forEach(System.out::println);
 
     }
+
+    private Customer findCustomer(int customerId) {
+
+        Customer customer;
+
+        try {
+            customer = customerRepository.findById(customerId).get();
+        } catch (NoSuchElementException e) {
+            customer = new Customer(
+                    customerId, "Customer_name_01", "surname_01", "asdfa", "asdf@asd.df"
+            );
+            customerRepository.save(customer);
+        }
+
+        return customer;
+    }
+
 }

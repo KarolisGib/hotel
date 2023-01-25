@@ -13,8 +13,8 @@ import lombok.ToString;
 public class Room {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "room_id")
     private Integer id;
 
 //    @ManyToMany

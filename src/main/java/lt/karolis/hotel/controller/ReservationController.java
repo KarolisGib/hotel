@@ -21,7 +21,7 @@ public class ReservationController {
 
     @GetMapping(path = "/allcustomers") //http://localhost:8080/reservationmapping/allcustomers
 
-    public @ResponseBody List<Reservation> getQuerryAllCustomers(Integer customerId) {
-        return reservationService.getQueryAllCustomers(customerId);
+    public @ResponseBody List<Reservation> getQuerryAllCustomers() {
+        return reservationService.getQueryAllCustomers();
     }
 }

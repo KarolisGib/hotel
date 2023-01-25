@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.List;
+
 @Entity
 @Table(name = "customers")
 @Getter
@@ -16,12 +18,14 @@ import lombok.ToString;
 public class Customer {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "customer_id")
     private Integer id;
 
-    //    @ManyToMany
-//    Set<Rooms> haveReservation;
+    @ToString.Exclude
+    @OneToMany(mappedBy="customer", fetch = FetchType.EAGER)
+    private List<Reservation> reservations;
+
     @Column(name = "name")
     private String name;
 
@@ -35,6 +39,15 @@ public class Customer {
     private String email;
 
     public Customer(String name, String surname, String phone, String email) {
+        this.name = name;
+        this.surname = surname;
+        this.phone = phone;
+        this.email = email;
+    }
+
+    public Customer(Integer id, String name, String surname, String phone, String email) {
+        this.id = id;
+        this.reservations = reservations;
         this.name = name;
         this.surname = surname;
         this.phone = phone;

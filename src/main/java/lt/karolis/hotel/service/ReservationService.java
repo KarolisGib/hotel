@@ -18,7 +18,7 @@ public class ReservationService {
         return reservationRepository.findById(id).get();
     }
 
-    public List<Reservation> getQueryAllCustomers(Integer customerId) {
-        return reservationRepository.getAllCustomers(customerId);
+    public List<Reservation> getQueryAllCustomers() {
+        return reservationRepository.getAllCustomers();
     }
 }
