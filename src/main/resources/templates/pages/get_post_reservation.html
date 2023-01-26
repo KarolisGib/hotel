@@ -28,19 +28,19 @@
     <th class="th">endDate</th>
   </tr>
 
-  <tr th:if="${#lists.isEmpty(key_reservation_list)}">
+  <tr th:if="${#lists.isEmpty(key_reservations)}">
     <td colspan="5">No Records found. Add some...!</td>
   </tr>
 
-  <tr th:each="reservation : ${key_reservation_list}">
+  <tr th:each="reservation : ${key_reservations}">
     <td class="td" th:text="${reservation.reservation_id}"></td>
-    <td class="td" th:text="${reservation.name}"></td>
-    <td class="td" th:text="${reservation.surname}"></td>
-    <td class="td" th:text="${reservation.phone}"></td>
-    <td class="td" th:text="${reservation.email}"></td>
-    <td class="td" th:text="${reservation.city}"></td>
-    <td class="td" th:text="${reservation.room}"></td>
-    <td class="td" th:text="${reservation.price}"></td>
+    <td class="td" th:text="${reservation.customer.name}"></td>
+    <td class="td" th:text="${reservation.customer.surname}"></td>
+    <td class="td" th:text="${reservation.customer.phone}"></td>
+    <td class="td" th:text="${reservation.customer.email}"></td>
+    <td class="td" th:text="${reservation.room.city}"></td>
+    <td class="td" th:text="${reservation.room.room}"></td>
+    <td class="td" th:text="${reservation.room.price}"></td>
     <td class="td" th:text="${reservation.startDate}"></td>
     <td class="td" th:text="${reservation.endDate}"></td>
   </tr>

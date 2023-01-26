@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
+import java.util.List;
 
 @Controller //http://localhost:8080/
 @RequestMapping(path = "/template") //http://localhost:8080/template
@@ -39,14 +40,15 @@ public class ReservationTemplateController {
     @RequestMapping(value = "/reservation/getandpost", method = RequestMethod.GET)
     public String getReservationById(Model model) {
         model.addAttribute("key_reservation", new Reservation());
-        model.addAttribute("key_reservation_list", Collections.emptyList());
+        model.addAttribute("key_reservations", Collections.emptyList());
         return "/pages/get_post_reservation";
     }
 
     @RequestMapping(value = "/reservation/getandpost", method = RequestMethod.POST)
-    public String postReservationById(Model model, @ModelAttribute(value = "key_reservation") Reservation reservation) {
+    public String postReservationById(
+            Model model, @ModelAttribute(value = "key_reservation") Reservation reservation) {
         reservationService.getReservationById(reservation.getId());
-        model.addAttribute("key_reservation_list", reservation);
+        model.addAttribute("key_reservations", reservation);
         return "/pages/get_post_reservation";
     }
 }
