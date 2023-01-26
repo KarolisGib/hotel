@@ -11,8 +11,11 @@ public class ReservationService {
     @Autowired
     private ReservationRepository reservationRepository;
 
-
-    public Reservation getReservationById(int id) {
+    public Reservation getReservationById(Integer id) {
         return reservationRepository.findById(id).get();
+    }
+
+    public Reservation getReservationByStartDate(String startDate) {
+        return reservationRepository.findByStartDate(startDate).get();
     }
 }
