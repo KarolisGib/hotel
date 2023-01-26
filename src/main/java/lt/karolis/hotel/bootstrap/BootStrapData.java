@@ -43,15 +43,15 @@ public class BootStrapData implements CommandLineRunner {
 
         System.out.println("\n===========================================================\n");
 
-        Reservation reservation01 = new Reservation(customer01, room02, "2023-01-01", "2023-01-05");
-        Reservation reservation02 = new Reservation(customer02, room01, "2023-01-26", "2023-01-30");
-        Reservation reservation03 = new Reservation(customer01, room02, "2023-01-10", "2023-01-12");
-        Reservation reservation04 = new Reservation(customer01, room01, "2023-01-24", "2023-01-25");
-        reservationRepository.save(reservation01);
-        reservationRepository.save(reservation02);
-        reservationRepository.save(reservation02);
-        reservationRepository.save(reservation02);
-        reservationRepository.saveAll(Arrays.asList(reservation01, reservation02, reservation03,reservation04));
+//        Reservation reservation01 = new Reservation(customer01, room02, "2023-01-01", "2023-01-05");
+//        Reservation reservation02 = new Reservation(customer02, room01, "2023-01-26", "2023-01-30");
+//        Reservation reservation03 = new Reservation(customer01, room02, "2023-01-10", "2023-01-12");
+//        Reservation reservation04 = new Reservation(customer01, room01, "2023-01-24", "2023-01-25");
+//        reservationRepository.save(reservation01);
+//        reservationRepository.save(reservation02);
+//        reservationRepository.save(reservation02);
+//        reservationRepository.save(reservation02);
+//        reservationRepository.saveAll(Arrays.asList(reservation01, reservation02, reservation03,reservation04));
         reservationRepository.findAll().forEach(System.out::println);
 
 
