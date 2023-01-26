@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<form action="#" th:action="@{/template/reservation/getandpost}" th:object="${key_reservation}" method="post">
+  <label>Rezervacijos ID:</label>
+  <input type="number" th:field="${key_reservation.reservation_id}" id="reservation_id"/>
+  <input type="submit" value="Submit" />
+  <input type="submit" value="Clear" onclick="document.getElementById('reservation_id').value = ''"/>
+</form>
+<br>
+
+<table>
+  <tr>
+    <th class="th">reservation_id</th>
+    <th class="th">name</th>
+    <th class="th">surname</th>
+    <th class="th">phone</th>
+    <th class="th">email</th>
+    <th class="th">city</th>
+    <th class="th">room</th>
+    <th class="th">price</th>
+    <th class="th">startDate</th>
+    <th class="th">endDate</th>
+  </tr>
+
+  <tr th:if="${#lists.isEmpty(key_reservation_list)}">
+    <td colspan="5">No Records found. Add some...!</td>
+  </tr>
+
+  <tr th:each="reservation : ${key_reservation_list}">
+    <td class="td" th:text="${reservation.reservation_id}"></td>
+    <td class="td" th:text="${reservation.name}"></td>
+    <td class="td" th:text="${reservation.surname}"></td>
+    <td class="td" th:text="${reservation.phone}"></td>
+    <td class="td" th:text="${reservation.email}"></td>
+    <td class="td" th:text="${reservation.city}"></td>
+    <td class="td" th:text="${reservation.room}"></td>
+    <td class="td" th:text="${reservation.price}"></td>
+    <td class="td" th:text="${reservation.startDate}"></td>
+    <td class="td" th:text="${reservation.endDate}"></td>
+  </tr>
+</table>
+
+</body>
+</html>
